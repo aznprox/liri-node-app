@@ -28,6 +28,7 @@ function searchedData(err, data, response) {
 
 for (var i = 0; i < twee.length; i++) {
 
+	console.log(twee[i].created_at);
 	console.log(twee[i].text);
 
 }
@@ -78,13 +79,18 @@ var runThings = function(string1, string2){
 
 if (string1 === "my-tweets") {
 twitterAPI(string2);
+logME(string1, string2);
 }if (string1 === "spotify-this-song") {
 spotifyAPI(string2);
+logME(string1, string2);
 }if (string1 === "movie-this") {
 omdbAPI(string2);
-}if (string1 === "please") {
+logME(string1, string2);
+}if (string1 === "do-what-it-says") {
 readME(string2);
+logME(string1, string2);
 }
+
 }
 
 
@@ -104,6 +110,16 @@ fs.readFile("random.txt", "utf8", function(error, data) {
   console.log(dataArr[1]);
 
 });
+}
+
+var logME = function(string1, string2){
+	fs.appendFile("log.txt", " " + string1 + "," + string2, function(err){
+
+  if (err) {
+    return console.log(err);
+  }
+
+	})
 }
 
 
